@@ -20,7 +20,7 @@ func writePasteboard(location: String) {
     NSPasteboard.generalPasteboard().setString(location, forType: NSStringPboardType)
 }
 
-func handlePasteboard() {
+func handlePasteboard() -> String? {
     if let texts = NSPasteboard.generalPasteboard().readObjectsForClasses([NSString.self as AnyClass], options: nil) as? [String] {
         for text in texts {
             if text.rangeOfString("\\\\tencent") != nil {
@@ -29,10 +29,12 @@ func handlePasteboard() {
             else if let range = text.rangeOfString("smb://tencent.com") {
                 if range.startIndex == text.startIndex {
                     simulateKeys()
+                    return text
                 }
             }
         }
     }
+    return nil
 }
 
 func convert(winConnect: String) -> String {
