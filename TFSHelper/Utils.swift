@@ -20,26 +20,28 @@ func writePasteboard(location: String) {
     NSPasteboard.generalPasteboard().setString(location, forType: NSStringPboardType)
 }
 
-func handlePasteboard() -> String? {
+func catchTFSLocation() -> String? {
     if let texts = NSPasteboard.generalPasteboard().readObjectsForClasses([NSString.self as AnyClass], options: nil) as? [String] {
-        for text in texts {
-            if text.rangeOfString("\\\\tencent") != nil {
-                writePasteboard(convert(text))
+        for var text in texts {
+            if let range = text.rangeOfString("\\\\tencent") {
+                text = convert(text.substringFromIndex(range.startIndex))
             }
-            else if let range = text.rangeOfString("smb://tencent.com") {
-                if range.startIndex == text.startIndex {
-                    simulateKeys()
-                    return text
-                }
+            if let range = text.rangeOfString("smb://tencent.com") {
+                text = text.substringFromIndex(range.startIndex)
+                return text
             }
         }
     }
     return nil
 }
 
-func convert(winConnect: String) -> String {
-    if winConnect.rangeOfString("smb://") != nil {
-        return winConnect
+func handlePasteboard() {
+    if let result = catchTFSLocation() {
+        writePasteboard(result)
+        simulateKeys()
     }
+}
+
+func convert(winConnect: String) -> String {
     return "smb:".stringByAppendingString(winConnect.stringByReplacingOccurrencesOfString("tencent\\", withString: "tencent.com\\").stringByReplacingOccurrencesOfString("\\", withString: "/"))
 }
