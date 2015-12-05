@@ -39,6 +39,7 @@ func handlePasteboard() {
     if let result = catchTFSLocation() {
         writePasteboard(result)
         simulateKeys()
+        NSPasteboard.generalPasteboard().clearContents()
     }
 }
 
