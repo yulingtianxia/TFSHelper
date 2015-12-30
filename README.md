@@ -1,4 +1,4 @@
-TFSConvertor
+TFSHelper
 ===========
 ![](https://img.shields.io/badge/swift-2.1-red.svg)
 ![](https://img.shields.io/badge/release-v1.2.1-blue.svg)
