@@ -29,7 +29,7 @@ TFSHelper 是我开发的一个 Mac 上的 tfs 辅助工具。它可以在我们
 
 登录时启动的原理是将其添加为启动项，可以参照[这篇文章](https://theswiftdev.com/2015/09/17/first-os-x-tutorial-how-to-launch-an-os-x-app-at-login/)。
 
-常用链接会记录最近5个打开的 tfs 链接，因为 `NSCache` 不是很符合我的要求，所以我自己手动写了个 LRU Cache。相比于 Cocoa 提供的 `NSCache`，我写的这个 LRU Cache 支持遍历 key 值，并根据场景需求做了一些定制，比如 get 操作并不会算作使用频次。用法很简单，可以将其当为数组来获取 key，也能当成字典使用，通过 key 获取 value。因为我让它兼容了两套协议，并实现 `SequenceType` 协议能够使用 `for...in` 遍历，这些特性都是 `NSCache` 所没有的。
+常用链接会记录最近打开的 5 个 TFS 链接，因为 `NSCache` 不是很符合我的要求，所以我自己手动写了个 LRU Cache。相比于 Cocoa 提供的 `NSCache`，我写的这个 LRU Cache 支持遍历 key 值，并根据场景需求做了一些定制，比如 get 操作并不会算作使用频次。用法很简单，可以将其当为数组来获取 key，也能当成字典使用，通过 key 获取 value。因为我让它兼容了两套协议，并实现 `SequenceType` 协议能够使用 `for...in` 遍历，这些特性都是 `NSCache` 所没有的。
 
 ##版本记录
 
