@@ -36,10 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             SMLoginItemSetEnabled(launcherAppIdentifier, autoLaunch)
         }
     }
-    let openLocationItem = NSMenuItem(title: "打开链接", action: "connect:", keyEquivalent: "")
-    let quitItem = NSMenuItem(title: "退出", action: "terminate", keyEquivalent: "")
-    let switchAutoCatchItem = NSMenuItem(title: "自动连接开启中", action: "switchAutoCatch", keyEquivalent: "")
-    let switchAutoLaunchItem = NSMenuItem(title: "登录时启动", action: "switchAutoLaunch", keyEquivalent: "")
+    let openLocationItem = NSMenuItem(title: "打开链接", action: #selector(AppDelegate.connect(_:)), keyEquivalent: "")
+    let quitItem = NSMenuItem(title: "退出", action: #selector(NSTask.terminate), keyEquivalent: "")
+    let switchAutoCatchItem = NSMenuItem(title: "自动连接开启中", action: #selector(AppDelegate.switchAutoCatch), keyEquivalent: "")
+    let switchAutoLaunchItem = NSMenuItem(title: "登录时启动", action: #selector(AppDelegate.switchAutoLaunch) , keyEquivalent: "")
     let recentLinksItem = NSMenuItem()
     let recentLinksMenu = NSMenu()
     let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         recentUseLinks.countLimit = 5
         
-        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "pollPasteboard:", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
         
         var startedAtLogin = false
         for app in NSWorkspace.sharedWorkspace().runningApplications {
@@ -148,10 +148,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func generateLinkItems(menu: NSMenu) {
         menu.removeAllItems()
         for key in recentUseLinks {
-            let item = NSMenuItem(title: recentUseLinks[key]!, action: "handleSelectLink:", keyEquivalent: "")
+            let item = NSMenuItem(title: recentUseLinks[key]!, action: #selector(AppDelegate.handleSelectLink(_:)), keyEquivalent: "")
             menu.addItem(item)
         }
-        let clearItem = NSMenuItem(title: "清空列表", action: "clearLinks", keyEquivalent: "")
+        let clearItem = NSMenuItem(title: "清空列表", action: #selector(AppDelegate.clearLinks), keyEquivalent: "")
         if menu.numberOfItems != 0 {
             let separator = NSMenuItem.separatorItem()
             separator.enabled = false

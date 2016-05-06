@@ -64,7 +64,9 @@ class CacheGenerator<T:Hashable> : GeneratorType {
     }
     
     func next() -> Element? {
-        return counter < array.count ? array[counter++] : nil
+        let result:Element? = counter < array.count ? array[counter] : nil
+        counter += 1
+        return result
     }
 }
 
