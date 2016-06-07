@@ -1,6 +1,6 @@
 TFSHelper
 ===========
-![](https://img.shields.io/badge/swift-2.1-red.svg)
+![](https://img.shields.io/badge/swift-2.2-red.svg)
 ![](https://img.shields.io/badge/prerelease-v1.3.0-blue.svg)
 ![](https://img.shields.io/badge/OS%20X-10.10%2B-brightgreen.svg)
 
@@ -22,6 +22,8 @@ TFSHelper 是我开发的一个 Mac 上的 tfs 辅助工具。它可以在我们
 作为一名 iOS 开发，平时使用 Mac 作为开发机。而身边很多人发的 tfs 链接为 windows 格式，需要手动转换或者照着路径手动一层一层点进去，由于 Mac 解析文件 tfs 的路径较慢，所以十分费时。本着 **“所有超过90秒的重复工作都应自动化”** 的原则，我开发了这款小工具。
 
 ## 实现原理 
+
+详细的实现原理可以查看[这篇博文](http://yulingtianxia.com/blog/2016/02/27/TFSHelper/)。
 
 开发语言主要是如今火爆的 Swift 语言和古老的 AppleScript 脚本语言。有兴趣的同学可以加入进来，或是提 PR。
 

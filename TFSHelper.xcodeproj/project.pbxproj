@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A42F6B091D02D83F0030FC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F6B081D02D83F0030FC9F /* AppDelegate.swift */; };
+		A42F6B0B1D02D83F0030FC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A42F6B0A1D02D83F0030FC9F /* Assets.xcassets */; };
+		A42F6B0E1D02D83F0030FC9F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42F6B0C1D02D83F0030FC9F /* MainMenu.xib */; };
 		A432581F1C06E9A500E7E8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A432581E1C06E9A500E7E8BE /* AppDelegate.swift */; };
 		A43258231C06E9A500E7E8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43258221C06E9A500E7E8BE /* Assets.xcassets */; };
 		A43258261C06E9A500E7E8BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43258241C06E9A500E7E8BE /* Main.storyboard */; };
 		A43258311C06E9A500E7E8BE /* TFSHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258301C06E9A500E7E8BE /* TFSHelperTests.swift */; };
 		A432583C1C06E9A500E7E8BE /* TFSHelperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A432583B1C06E9A500E7E8BE /* TFSHelperUITests.swift */; };
 		A432584A1C06E9D500E7E8BE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258491C06E9D500E7E8BE /* Utils.swift */; };
-		A432584C1C06EB8200E7E8BE /* simulateKeys.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */; };
+		A482F80A1D05740500FD8F6E /* simulateKeys.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */; };
 		A4BB13D01C0B349C00466DF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB13CF1C0B349C00466DF5 /* AppDelegate.swift */; };
 		A4BB13D21C0B349C00466DF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BB13D11C0B349C00466DF5 /* Assets.xcassets */; };
 		A4BB13D51C0B349C00466DF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BB13D31C0B349C00466DF5 /* MainMenu.xib */; };
@@ -38,6 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A460D0C71D059E63007A8048 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A4BB13DC1C0B35A300466DF5 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A42F6B061D02D83F0030FC9F /* SandBoxTricker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandBoxTricker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42F6B081D02D83F0030FC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A42F6B0A1D02D83F0030FC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A42F6B0D1D02D83F0030FC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A42F6B0F1D02D83F0030FC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A432581B1C06E9A500E7E8BE /* TFSHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFSHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A432581E1C06E9A500E7E8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A43258221C06E9A500E7E8BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +80,8 @@
 		A432583B1C06E9A500E7E8BE /* TFSHelperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSHelperUITests.swift; sourceTree = "<group>"; };
 		A432583D1C06E9A500E7E8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43258491C06E9D500E7E8BE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = simulateKeys.scpt; sourceTree = "<group>"; };
+		A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = simulateKeys.scpt; path = ../TFSHelper/simulateKeys.scpt; sourceTree = "<group>"; };
+		A4ADC03F1D058F310048BB7C /* SandBoxTricker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SandBoxTricker.entitlements; sourceTree = "<group>"; };
 		A4BB13CD1C0B349C00466DF5 /* TFSHelperLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFSHelperLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BB13CF1C0B349C00466DF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4BB13D11C0B349C00466DF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A42F6B031D02D83F0030FC9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A43258181C06E9A500E7E8BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,6 +130,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A42F6B071D02D83F0030FC9F /* SandBoxTricker */ = {
+			isa = PBXGroup;
+			children = (
+				A4ADC03F1D058F310048BB7C /* SandBoxTricker.entitlements */,
+				A42F6B081D02D83F0030FC9F /* AppDelegate.swift */,
+				A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */,
+				A42F6B0A1D02D83F0030FC9F /* Assets.xcassets */,
+				A42F6B0C1D02D83F0030FC9F /* MainMenu.xib */,
+				A42F6B0F1D02D83F0030FC9F /* Info.plist */,
+			);
+			path = SandBoxTricker;
+			sourceTree = "<group>";
+		};
 		A43258121C06E9A500E7E8BE = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +150,7 @@
 				A432582F1C06E9A500E7E8BE /* TFSHelperTests */,
 				A432583A1C06E9A500E7E8BE /* TFSHelperUITests */,
 				A4BB13CE1C0B349C00466DF5 /* TFSHelperLauncher */,
+				A42F6B071D02D83F0030FC9F /* SandBoxTricker */,
 				A432581C1C06E9A500E7E8BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +162,7 @@
 				A432582C1C06E9A500E7E8BE /* TFSHelperTests.xctest */,
 				A43258371C06E9A500E7E8BE /* TFSHelperUITests.xctest */,
 				A4BB13CD1C0B349C00466DF5 /* TFSHelperLauncher.app */,
+				A42F6B061D02D83F0030FC9F /* SandBoxTricker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,7 +173,6 @@
 				A4BB13DA1C0B350F00466DF5 /* TFSHelper.entitlements */,
 				A432581E1C06E9A500E7E8BE /* AppDelegate.swift */,
 				A43258491C06E9D500E7E8BE /* Utils.swift */,
-				A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */,
 				A43258221C06E9A500E7E8BE /* Assets.xcassets */,
 				A43258241C06E9A500E7E8BE /* Main.storyboard */,
 				A43258271C06E9A500E7E8BE /* Info.plist */,
@@ -174,6 +213,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A42F6B051D02D83F0030FC9F /* SandBoxTricker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A42F6B121D02D83F0030FC9F /* Build configuration list for PBXNativeTarget "SandBoxTricker" */;
+			buildPhases = (
+				A42F6B021D02D83F0030FC9F /* Sources */,
+				A42F6B031D02D83F0030FC9F /* Frameworks */,
+				A42F6B041D02D83F0030FC9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SandBoxTricker;
+			productName = SandBoxTricker;
+			productReference = A42F6B061D02D83F0030FC9F /* SandBoxTricker.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A432581A1C06E9A500E7E8BE /* TFSHelper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A43258401C06E9A500E7E8BE /* Build configuration list for PBXNativeTarget "TFSHelper" */;
@@ -182,6 +238,7 @@
 				A43258181C06E9A500E7E8BE /* Frameworks */,
 				A43258191C06E9A500E7E8BE /* Resources */,
 				A4BB13DC1C0B35A300466DF5 /* CopyFiles */,
+				A460D0C71D059E63007A8048 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -251,16 +308,25 @@
 		A43258131C06E9A500E7E8BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "杨萧玉";
 				TargetAttributes = {
+					A42F6B051D02D83F0030FC9F = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = D3RCVUP6VH;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					A432581A1C06E9A500E7E8BE = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = D3RCVUP6VH;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -300,16 +366,26 @@
 				A432582B1C06E9A500E7E8BE /* TFSHelperTests */,
 				A43258361C06E9A500E7E8BE /* TFSHelperUITests */,
 				A4BB13CC1C0B349C00466DF5 /* TFSHelperLauncher */,
+				A42F6B051D02D83F0030FC9F /* SandBoxTricker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A42F6B041D02D83F0030FC9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42F6B0B1D02D83F0030FC9F /* Assets.xcassets in Resources */,
+				A482F80A1D05740500FD8F6E /* simulateKeys.scpt in Resources */,
+				A42F6B0E1D02D83F0030FC9F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A43258191C06E9A500E7E8BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A432584C1C06EB8200E7E8BE /* simulateKeys.scpt in Resources */,
 				A43258231C06E9A500E7E8BE /* Assets.xcassets in Resources */,
 				A43258261C06E9A500E7E8BE /* Main.storyboard in Resources */,
 			);
@@ -341,6 +417,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A42F6B021D02D83F0030FC9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42F6B091D02D83F0030FC9F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A43258171C06E9A500E7E8BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +474,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A42F6B0C1D02D83F0030FC9F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A42F6B0D1D02D83F0030FC9F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		A43258241C06E9A500E7E8BE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -409,6 +501,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A42F6B101D02D83F0030FC9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SandBoxTricker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.SandBoxTricker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A42F6B111D02D83F0030FC9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SandBoxTricker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.SandBoxTricker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		A432583E1C06E9A500E7E8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TFSHelper/TFSHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = TFSHelper/Info.plist;
@@ -506,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TFSHelper/TFSHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = TFSHelper/Info.plist;
@@ -602,6 +732,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A42F6B121D02D83F0030FC9F /* Build configuration list for PBXNativeTarget "SandBoxTricker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A42F6B101D02D83F0030FC9F /* Debug */,
+				A42F6B111D02D83F0030FC9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A43258161C06E9A500E7E8BE /* Build configuration list for PBXProject "TFSHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

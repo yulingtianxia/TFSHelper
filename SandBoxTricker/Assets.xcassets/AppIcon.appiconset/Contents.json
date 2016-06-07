@@ -41,15 +41,13 @@
       "scale" : "2x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "TFS.png",
+      "size" : "512x512",
       "scale" : "1x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "tfs1024.png",
+      "size" : "512x512",
       "scale" : "2x"
     }
   ],

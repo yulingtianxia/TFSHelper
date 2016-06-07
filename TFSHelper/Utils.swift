@@ -11,11 +11,14 @@ import Cocoa
 var recentUseLinks = LRUCache <String, String>()
 var previousChangeCount: Int = 0
 
-func simulateKeys() {
-    let task = NSTask()
-    task.launchPath = "/usr/bin/osascript"
-    task.arguments = ["\(NSBundle.mainBundle().resourcePath!)/simulateKeys.scpt"]
-    task.launch()
+func unzip(destination: String, zipFile: String) {
+    let unzip = NSTask()
+    unzip.launchPath = "/usr/bin/unzip"
+    unzip.arguments =  ["-uo", "-d", destination, zipFile];
+    let pipe = NSPipe()
+    unzip.standardOutput = pipe
+    unzip.launch()
+    unzip.waitUntilExit()
 }
 
 func writePasteboard(location: String) {
@@ -42,7 +45,7 @@ func handlePasteboard() {
     if let result = catchTFSLocation() {
         recentUseLinks[result] = NSURL(fileURLWithPath: result).pathComponents?.last
         writePasteboard(result)
-        simulateKeys()
+        NSDistributedNotificationCenter.defaultCenter().postNotificationName("simulateKeys", object: NSBundle.mainBundle().bundleIdentifier!)
     }
     previousChangeCount = NSPasteboard.generalPasteboard().changeCount
 }

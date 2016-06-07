@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if !alreadyRunning {
-            NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "terminate", name: "killme", object: mainAppIdentifier)
+            NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.terminate), name: "killLauncher", object: mainAppIdentifier)
             
             let path = NSBundle.mainBundle().bundlePath as NSString
             var components = path.pathComponents
@@ -52,6 +52,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func terminate() {
         NSApp.terminate(nil)
+    }
+    
+    deinit {
+        NSDistributedNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
 

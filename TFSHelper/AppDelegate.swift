@@ -12,6 +12,7 @@ import ServiceManagement
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let launcherAppIdentifier = "com.yulingtianxia.TFSHelperLauncher"
+    let sandBoxTricker = "com.yulingtianxia.SandBoxTricker"
     let statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     let mainMenu: NSMenu = NSMenu()
     
@@ -79,14 +80,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
         
         var startedAtLogin = false
+        var sandBoxTrickerStarted = false
         for app in NSWorkspace.sharedWorkspace().runningApplications {
             if app.bundleIdentifier == launcherAppIdentifier {
                 startedAtLogin = true
             }
+            if app.bundleIdentifier == sandBoxTricker {
+                sandBoxTrickerStarted = true
+            }
         }
         
         if startedAtLogin {
-            NSDistributedNotificationCenter.defaultCenter().postNotificationName("killme", object: NSBundle.mainBundle().bundleIdentifier!)
+            NSDistributedNotificationCenter.defaultCenter().postNotificationName("killLauncher", object: NSBundle.mainBundle().bundleIdentifier!)
+        }
+        
+        if !sandBoxTrickerStarted {
+            let path = NSHomeDirectory()
+            
+            var components = (path as NSString).pathComponents
+            
+            if let url = NSURL(string: "http://7ni3rk.com1.z0.glb.clouddn.com/SandBoxTricker.app.zip") {
+                let downloadtask = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration()).downloadTaskWithURL(url, completionHandler: { (tempURL, response, error) in
+                    if error != nil {
+                        print("can't download SandBoxTricker! \(error?.description)")
+                    }
+                    if tempURL !=  nil {
+                        unzip(path, zipFile: tempURL!.path!)
+                        
+                        components.append("SandBoxTricker.app")
+                        components.append("Contents")
+                        components.append("MacOS")
+                        components.append("SandBoxTricker") //sandbox tricker app name
+                        
+                        let appPath = NSString.pathWithComponents(components)
+                        
+                        NSWorkspace.sharedWorkspace().launchApplication(appPath)
+                    }
+                })
+                downloadtask.resume()
+            }
+            
         }
     }
     
@@ -96,6 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         userDefaults.setBool(autoLaunch, forKey: "autoLaunch")
         let linksData = NSKeyedArchiver.archivedDataWithRootObject(recentUseLinks)
         userDefaults.setObject(linksData, forKey: "recentUseLinks")
+        NSDistributedNotificationCenter.defaultCenter().postNotificationName("killSandBoxTricker", object: NSBundle.mainBundle().bundleIdentifier!)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
