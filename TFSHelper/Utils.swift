@@ -51,7 +51,7 @@ func handlePasteboard() {
 }
 
 func convert(winConnect: String) -> String {
-    return "smb:".stringByAppendingString(winConnect.stringByReplacingOccurrencesOfString("tencent\\", withString: "tencent.com\\").stringByReplacingOccurrencesOfString("\\", withString: "/"))
+    return "smb:".stringByAppendingString(winConnect.stringByReplacingOccurrencesOfString("tencent\\", withString: "tencent.com\\").stringByReplacingOccurrencesOfString("\\", withString: "/")).stringByReplacingOccurrencesOfString("\n", withString: "")
 }
 
 class CacheGenerator<T:Hashable> : GeneratorType {
