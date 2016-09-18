@@ -13,7 +13,7 @@ import ServiceManagement
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let launcherAppIdentifier = "com.yulingtianxia.TFSHelperLauncher"
     let sandBoxTricker = "com.yulingtianxia.SandBoxTricker"
-    let statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let mainMenu: NSMenu = NSMenu()
     
     var autoCatch: Bool = true {
@@ -34,18 +34,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             else {
                 switchAutoLaunchItem.title = "登录时不启动"
             }
-            SMLoginItemSetEnabled(launcherAppIdentifier, autoLaunch)
+            SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
         }
     }
     let openLocationItem = NSMenuItem(title: "打开链接", action: #selector(AppDelegate.connect(_:)), keyEquivalent: "")
-    let quitItem = NSMenuItem(title: "退出", action: #selector(NSTask.terminate), keyEquivalent: "")
+    let quitItem = NSMenuItem(title: "退出", action: #selector(Process.terminate), keyEquivalent: "")
     let switchAutoCatchItem = NSMenuItem(title: "自动连接开启中", action: #selector(AppDelegate.switchAutoCatch), keyEquivalent: "")
     let switchAutoLaunchItem = NSMenuItem(title: "登录时启动", action: #selector(AppDelegate.switchAutoLaunch) , keyEquivalent: "")
     let recentLinksItem = NSMenuItem()
     let recentLinksMenu = NSMenu()
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         recentLinksMenu.delegate = self
         recentLinksItem.title = "常用链接"
@@ -63,25 +63,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         statusItem.menu = mainMenu
         
         recentUseLinks = LRUCache <String, String>()
-        let linksData = NSKeyedArchiver.archivedDataWithRootObject(recentUseLinks)
+        let linksData = NSKeyedArchiver.archivedData(withRootObject: recentUseLinks)
         
-        userDefaults.registerDefaults(["autoCatch":autoCatch])
-        userDefaults.registerDefaults(["autoLaunch":autoLaunch])
-        userDefaults.registerDefaults(["recentUseLinks":linksData])
+        userDefaults.register(defaults: ["autoCatch":autoCatch])
+        userDefaults.register(defaults: ["autoLaunch":autoLaunch])
+        userDefaults.register(defaults: ["recentUseLinks":linksData])
         
-        autoCatch = userDefaults.boolForKey("autoCatch")
-        autoLaunch = userDefaults.boolForKey("autoLaunch")
+        autoCatch = userDefaults.bool(forKey: "autoCatch")
+        autoLaunch = userDefaults.bool(forKey: "autoLaunch")
         
-        if let data = userDefaults.objectForKey("recentUseLinks") as? NSData {
-            recentUseLinks = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! LRUCache <String, String>
+        if let data = userDefaults.object(forKey: "recentUseLinks") as? Data {
+            recentUseLinks = NSKeyedUnarchiver.unarchiveObject(with: data) as! LRUCache <String, String>
         }
         recentUseLinks.countLimit = 5
         
-        NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
         
         var startedAtLogin = false
         var sandBoxTrickerStarted = false
-        for app in NSWorkspace.sharedWorkspace().runningApplications {
+        for app in NSWorkspace.shared().runningApplications {
             if app.bundleIdentifier == launcherAppIdentifier {
                 startedAtLogin = true
             }
@@ -91,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         
         if startedAtLogin {
-            NSDistributedNotificationCenter.defaultCenter().postNotificationName("killLauncher", object: NSBundle.mainBundle().bundleIdentifier!)
+            DistributedNotificationCenter.default().post(name: NSNotification.Name("killLauncher"), object: Bundle.main.bundleIdentifier!)
         }
         
         if !sandBoxTrickerStarted {
@@ -99,22 +99,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             
             var components = (path as NSString).pathComponents
             
-            if let url = NSURL(string: "http://7ni3rk.com1.z0.glb.clouddn.com/SandBoxTricker.app.zip") {
-                let downloadtask = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration()).downloadTaskWithURL(url, completionHandler: { (tempURL, response, error) in
+            if let url = URL(string: "http://7ni3rk.com1.z0.glb.clouddn.com/SandBoxTricker.app.zip") {
+                let downloadtask = URLSession(configuration: URLSessionConfiguration.default).downloadTask(with: url, completionHandler: { (tempURL, response, error) in
                     if error != nil {
-                        print("can't download SandBoxTricker! \(error?.description)")
+                        print("can't download SandBoxTricker! \(error?.localizedDescription)")
                     }
                     if tempURL !=  nil {
-                        unzip(path, zipFile: tempURL!.path!)
+                        unzip(path, zipFile: tempURL!.path)
                         
                         components.append("SandBoxTricker.app")
                         components.append("Contents")
                         components.append("MacOS")
                         components.append("SandBoxTricker") //sandbox tricker app name
                         
-                        let appPath = NSString.pathWithComponents(components)
+                        let appPath = NSString.path(withComponents: components)
                         
-                        NSWorkspace.sharedWorkspace().launchApplication(appPath)
+                        NSWorkspace.shared().launchApplication(appPath)
                     }
                 })
                 downloadtask.resume()
@@ -123,31 +123,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
     
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        userDefaults.setBool(autoCatch, forKey: "autoCatch")
-        userDefaults.setBool(autoLaunch, forKey: "autoLaunch")
-        let linksData = NSKeyedArchiver.archivedDataWithRootObject(recentUseLinks)
-        userDefaults.setObject(linksData, forKey: "recentUseLinks")
-        NSDistributedNotificationCenter.defaultCenter().postNotificationName("killSandBoxTricker", object: NSBundle.mainBundle().bundleIdentifier!)
+        userDefaults.set(autoCatch, forKey: "autoCatch")
+        userDefaults.set(autoLaunch, forKey: "autoLaunch")
+        let linksData = NSKeyedArchiver.archivedData(withRootObject: recentUseLinks)
+        userDefaults.set(linksData, forKey: "recentUseLinks")
+        DistributedNotificationCenter.default().post(name: NSNotification.Name("killSandBoxTricker"), object: Bundle.main.bundleIdentifier!)
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
     }
     
-    func pollPasteboard(timer: NSTimer) {
+    func pollPasteboard(_ timer: Timer) {
         if !autoCatch {
             return
         }
-        let currentChangeCount = NSPasteboard.generalPasteboard().changeCount
+        let currentChangeCount = NSPasteboard.general().changeCount
         if currentChangeCount == previousChangeCount {
             return
         }
         handlePasteboard()
     }
     
-    func connect(sender: NSStatusBarButton) {
+    func connect(_ sender: NSStatusBarButton) {
         handlePasteboard()
     }
     
@@ -165,11 +165,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     // MARK: NSMenuDelegate
     
-    func menuWillOpen(menu: NSMenu) {
+    func menuWillOpen(_ menu: NSMenu) {
         if menu == mainMenu {
-            openLocationItem.hidden = false
+            openLocationItem.isHidden = false
             guard let _ = catchTFSLocation() else {
-                openLocationItem.hidden = true
+                openLocationItem.isHidden = true
                 return
             }
         }
@@ -179,7 +179,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     // 生成 MenuItem 数组
-    func generateLinkItems(menu: NSMenu) {
+    func generateLinkItems(_ menu: NSMenu) {
         menu.removeAllItems()
         for key in recentUseLinks {
             let item = NSMenuItem(title: recentUseLinks[key]!, action: #selector(AppDelegate.handleSelectLink(_:)), keyEquivalent: "")
@@ -187,19 +187,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         let clearItem = NSMenuItem(title: "清空列表", action: #selector(AppDelegate.clearLinks), keyEquivalent: "")
         if menu.numberOfItems != 0 {
-            let separator = NSMenuItem.separatorItem()
-            separator.enabled = false
+            let separator = NSMenuItem.separator()
+            separator.isEnabled = false
             menu.addItem(separator)
         }
         else {
-            clearItem.enabled = false
+            clearItem.isEnabled = false
         }
         menu.addItem(clearItem)
     }
     
     // 处理点击link子菜单事件
-    func handleSelectLink(item: NSMenuItem) {
-        let index = recentLinksMenu.indexOfItem(item)
+    func handleSelectLink(_ item: NSMenuItem) {
+        let index = recentLinksMenu.index(of: item)
         writePasteboard(recentUseLinks[index])
         if !autoCatch {
             handlePasteboard()

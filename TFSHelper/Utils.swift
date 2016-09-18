@@ -11,29 +11,29 @@ import Cocoa
 var recentUseLinks = LRUCache <String, String>()
 var previousChangeCount: Int = 0
 
-func unzip(destination: String, zipFile: String) {
-    let unzip = NSTask()
+func unzip(_ destination: String, zipFile: String) {
+    let unzip = Process()
     unzip.launchPath = "/usr/bin/unzip"
     unzip.arguments =  ["-uo", "-d", destination, zipFile];
-    let pipe = NSPipe()
+    let pipe = Pipe()
     unzip.standardOutput = pipe
     unzip.launch()
     unzip.waitUntilExit()
 }
 
-func writePasteboard(location: String) {
-    NSPasteboard.generalPasteboard().declareTypes([NSStringPboardType], owner: nil)
-    NSPasteboard.generalPasteboard().setString(location, forType: NSStringPboardType)
+func writePasteboard(_ location: String) {
+    NSPasteboard.general().declareTypes([NSStringPboardType], owner: nil)
+    NSPasteboard.general().setString(location, forType: NSStringPboardType)
 }
 
 func catchTFSLocation() -> String? {
-    if let texts = NSPasteboard.generalPasteboard().readObjectsForClasses([NSString.self as AnyClass], options: nil) as? [String] {
+    if let texts = NSPasteboard.general().readObjects(forClasses: [NSString.self as AnyClass], options: nil) as? [String] {
         for var text in texts {
-            if let range = text.rangeOfString("\\\\tencent") {
-                text = convert(text.substringFromIndex(range.startIndex))
+            if let range = text.range(of: "\\\\tencent") {
+                text = convert(text.substring(from: range.lowerBound))
             }
-            if let range = text.rangeOfString("smb://") {
-                text = text.substringFromIndex(range.startIndex)
+            if let range = text.range(of: "smb://") {
+                text = text.substring(from: range.lowerBound)
                 return text
             }
         }
@@ -43,18 +43,18 @@ func catchTFSLocation() -> String? {
 
 func handlePasteboard() {
     if let result = catchTFSLocation() {
-        recentUseLinks[result] = NSURL(fileURLWithPath: result).pathComponents?.last
+        recentUseLinks[result] = URL(fileURLWithPath: result).pathComponents.last
         writePasteboard(result)
-        NSDistributedNotificationCenter.defaultCenter().postNotificationName("simulateKeys", object: NSBundle.mainBundle().bundleIdentifier!)
+        DistributedNotificationCenter.default().post(name: NSNotification.Name("simulateKeys"), object: Bundle.main.bundleIdentifier!)
     }
-    previousChangeCount = NSPasteboard.generalPasteboard().changeCount
+    previousChangeCount = NSPasteboard.general().changeCount
 }
 
-func convert(winConnect: String) -> String {
-    return "smb:".stringByAppendingString(winConnect.stringByReplacingOccurrencesOfString("tencent\\", withString: "tencent.com\\").stringByReplacingOccurrencesOfString("\\", withString: "/")).stringByReplacingOccurrencesOfString("\n", withString: "")
+func convert(_ winConnect: String) -> String {
+    return "smb:" + winConnect.replacingOccurrences(of: "tencent\\", with: "tencent.com\\").replacingOccurrences(of: "\\", with: "/").replacingOccurrences(of: "\n", with: "")
 }
 
-class CacheGenerator<T:Hashable> : GeneratorType {
+class CacheGenerator<T:Hashable> : IteratorProtocol {
     
     typealias Element = T
     
@@ -73,10 +73,10 @@ class CacheGenerator<T:Hashable> : GeneratorType {
     }
 }
 
-class LRUCache <K:Hashable, V> : NSObject, NSCoding, SequenceType {
+class LRUCache <K:Hashable, V> : NSObject, NSCoding, Sequence {
     
-    private var _cache = [K:V]()
-    private var _keys = [K]()
+    fileprivate var _cache = [K:V]()
+    fileprivate var _keys = [K]()
     
     var countLimit:Int = 0
     
@@ -96,7 +96,7 @@ class LRUCache <K:Hashable, V> : NSObject, NSCoding, SequenceType {
         }
         set(obj) {
             if obj == nil {
-                _cache.removeValueForKey(key)
+                _cache.removeValue(forKey: key)
             }
             else {
                 useKey(key)
@@ -105,22 +105,22 @@ class LRUCache <K:Hashable, V> : NSObject, NSCoding, SequenceType {
         }
     }
     
-    private func useKey(key: K) {
-        if let index = _keys.indexOf(key) {// key 已存在数组中，只需要将其挪至 index 0
-            _keys.insert(_keys.removeAtIndex(index), atIndex: 0)
+    fileprivate func useKey(_ key: K) {
+        if let index = _keys.index(of: key) {// key 已存在数组中，只需要将其挪至 index 0
+            _keys.insert(_keys.remove(at: index), at: 0)
         }
         else {// key 不存在数组中，需要将其插入 index 0，并在超出缓存大小阈值时移走最后面的元素
             if _keys.count >= countLimit {
-                _cache.removeValueForKey(_keys.last!)
+                _cache.removeValue(forKey: _keys.last!)
                 _keys.removeLast()
             }
-            _keys.insert(key, atIndex: 0)
+            _keys.insert(key, at: 0)
         }
     }
     
-    typealias Generator = CacheGenerator<K>
+    typealias Iterator = CacheGenerator<K>
     
-    func generate() -> Generator {
+    func makeIterator() -> Iterator {
         return CacheGenerator(keys:_keys)
     }
     
@@ -131,13 +131,13 @@ class LRUCache <K:Hashable, V> : NSObject, NSCoding, SequenceType {
     
     // NSCoding
     @objc required init?(coder aDecoder: NSCoder) {
-        _keys = aDecoder.decodeObjectForKey("keys") as! [K]
-        _cache = aDecoder.decodeObjectForKey("cache") as! [K:V]
+        _keys = aDecoder.decodeObject(forKey: "keys") as! [K]
+        _cache = aDecoder.decodeObject(forKey: "cache") as! [K:V]
     }
     
-    @objc func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(_keys as! AnyObject as! NSArray, forKey: "keys")
-        aCoder.encodeObject(_cache as! AnyObject as! NSDictionary, forKey: "cache")
+    @objc func encode(with aCoder: NSCoder) {
+        aCoder.encode(_keys as AnyObject as! NSArray, forKey: "keys")
+        aCoder.encode(_cache as AnyObject as! NSDictionary, forKey: "cache")
     }
     
 }

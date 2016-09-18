@@ -14,7 +14,6 @@
 		A43258231C06E9A500E7E8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43258221C06E9A500E7E8BE /* Assets.xcassets */; };
 		A43258261C06E9A500E7E8BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43258241C06E9A500E7E8BE /* Main.storyboard */; };
 		A43258311C06E9A500E7E8BE /* TFSHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258301C06E9A500E7E8BE /* TFSHelperTests.swift */; };
-		A432583C1C06E9A500E7E8BE /* TFSHelperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A432583B1C06E9A500E7E8BE /* TFSHelperUITests.swift */; };
 		A432584A1C06E9D500E7E8BE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258491C06E9D500E7E8BE /* Utils.swift */; };
 		A482F80A1D05740500FD8F6E /* simulateKeys.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */; };
 		A4BB13D01C0B349C00466DF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB13CF1C0B349C00466DF5 /* AppDelegate.swift */; };
@@ -25,13 +24,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		A432582D1C06E9A500E7E8BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A43258131C06E9A500E7E8BE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A432581A1C06E9A500E7E8BE;
-			remoteInfo = TFSHelper;
-		};
-		A43258381C06E9A500E7E8BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A43258131C06E9A500E7E8BE /* Project object */;
 			proxyType = 1;
@@ -67,9 +59,6 @@
 		A432582C1C06E9A500E7E8BE /* TFSHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFSHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43258301C06E9A500E7E8BE /* TFSHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSHelperTests.swift; sourceTree = "<group>"; };
 		A43258321C06E9A500E7E8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A43258371C06E9A500E7E8BE /* TFSHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFSHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A432583B1C06E9A500E7E8BE /* TFSHelperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSHelperUITests.swift; sourceTree = "<group>"; };
-		A432583D1C06E9A500E7E8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43258491C06E9D500E7E8BE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = simulateKeys.scpt; path = ../TFSHelper/simulateKeys.scpt; sourceTree = "<group>"; };
 		A4ADC03F1D058F310048BB7C /* SandBoxTricker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SandBoxTricker.entitlements; sourceTree = "<group>"; };
@@ -104,13 +93,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A43258341C06E9A500E7E8BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A4BB13CA1C0B349C00466DF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,7 +121,6 @@
 			children = (
 				A432581D1C06E9A500E7E8BE /* TFSHelper */,
 				A432582F1C06E9A500E7E8BE /* TFSHelperTests */,
-				A432583A1C06E9A500E7E8BE /* TFSHelperUITests */,
 				A4BB13CE1C0B349C00466DF5 /* TFSHelperLauncher */,
 				A42F6B071D02D83F0030FC9F /* SandBoxTricker */,
 				A432581C1C06E9A500E7E8BE /* Products */,
@@ -151,7 +132,6 @@
 			children = (
 				A432581B1C06E9A500E7E8BE /* TFSHelper.app */,
 				A432582C1C06E9A500E7E8BE /* TFSHelperTests.xctest */,
-				A43258371C06E9A500E7E8BE /* TFSHelperUITests.xctest */,
 				A4BB13CD1C0B349C00466DF5 /* TFSHelperLauncher.app */,
 				A42F6B061D02D83F0030FC9F /* SandBoxTricker.app */,
 			);
@@ -178,15 +158,6 @@
 				A43258321C06E9A500E7E8BE /* Info.plist */,
 			);
 			path = TFSHelperTests;
-			sourceTree = "<group>";
-		};
-		A432583A1C06E9A500E7E8BE /* TFSHelperUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A432583B1C06E9A500E7E8BE /* TFSHelperUITests.swift */,
-				A432583D1C06E9A500E7E8BE /* Info.plist */,
-			);
-			path = TFSHelperUITests;
 			sourceTree = "<group>";
 		};
 		A4BB13CE1C0B349C00466DF5 /* TFSHelperLauncher */ = {
@@ -257,24 +228,6 @@
 			productReference = A432582C1C06E9A500E7E8BE /* TFSHelperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A43258361C06E9A500E7E8BE /* TFSHelperUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A43258461C06E9A500E7E8BE /* Build configuration list for PBXNativeTarget "TFSHelperUITests" */;
-			buildPhases = (
-				A43258331C06E9A500E7E8BE /* Sources */,
-				A43258341C06E9A500E7E8BE /* Frameworks */,
-				A43258351C06E9A500E7E8BE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A43258391C06E9A500E7E8BE /* PBXTargetDependency */,
-			);
-			name = TFSHelperUITests;
-			productName = TFSHelperUITests;
-			productReference = A43258371C06E9A500E7E8BE /* TFSHelperUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		A4BB13CC1C0B349C00466DF5 /* TFSHelperLauncher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4BB13D91C0B349C00466DF5 /* Build configuration list for PBXNativeTarget "TFSHelperLauncher" */;
@@ -299,7 +252,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "杨萧玉";
 				TargetAttributes = {
 					A42F6B051D02D83F0030FC9F = {
@@ -314,6 +267,7 @@
 					A432581A1C06E9A500E7E8BE = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = D3RCVUP6VH;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -322,15 +276,13 @@
 					};
 					A432582B1C06E9A500E7E8BE = {
 						CreatedOnToolsVersion = 7.1.1;
-						TestTargetID = A432581A1C06E9A500E7E8BE;
-					};
-					A43258361C06E9A500E7E8BE = {
-						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = A432581A1C06E9A500E7E8BE;
 					};
 					A4BB13CC1C0B349C00466DF5 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = D3RCVUP6VH;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -354,7 +306,6 @@
 			targets = (
 				A432581A1C06E9A500E7E8BE /* TFSHelper */,
 				A432582B1C06E9A500E7E8BE /* TFSHelperTests */,
-				A43258361C06E9A500E7E8BE /* TFSHelperUITests */,
 				A4BB13CC1C0B349C00466DF5 /* TFSHelperLauncher */,
 				A42F6B051D02D83F0030FC9F /* SandBoxTricker */,
 			);
@@ -382,13 +333,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A432582A1C06E9A500E7E8BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A43258351C06E9A500E7E8BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -432,14 +376,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A43258331C06E9A500E7E8BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A432583C1C06E9A500E7E8BE /* TFSHelperUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A4BB13C91C0B349C00466DF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,11 +391,6 @@
 			isa = PBXTargetDependency;
 			target = A432581A1C06E9A500E7E8BE /* TFSHelper */;
 			targetProxy = A432582D1C06E9A500E7E8BE /* PBXContainerItemProxy */;
-		};
-		A43258391C06E9A500E7E8BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A432581A1C06E9A500E7E8BE /* TFSHelper */;
-			targetProxy = A43258381C06E9A500E7E8BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -540,8 +471,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -584,8 +517,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -604,6 +539,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -618,6 +554,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -632,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -644,6 +582,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFSHelper.app/Contents/MacOS/TFSHelper";
 			};
 			name = Debug;
@@ -657,33 +596,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFSHelper.app/Contents/MacOS/TFSHelper";
-			};
-			name = Release;
-		};
-		A43258471C06E9A500E7E8BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TFSHelperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = TFSHelper;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		A43258481C06E9A500E7E8BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TFSHelperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = TFSHelper;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -700,6 +614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -716,6 +631,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelperLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -754,15 +670,6 @@
 			buildConfigurations = (
 				A43258441C06E9A500E7E8BE /* Debug */,
 				A43258451C06E9A500E7E8BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A43258461C06E9A500E7E8BE /* Build configuration list for PBXNativeTarget "TFSHelperUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A43258471C06E9A500E7E8BE /* Debug */,
-				A43258481C06E9A500E7E8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

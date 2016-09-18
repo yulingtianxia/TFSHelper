@@ -13,10 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let mainAppIdentifier = "com.yulingtianxia.TFSHelper"
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        let running = NSWorkspace.sharedWorkspace().runningApplications
+        let running = NSWorkspace.shared().runningApplications
         var alreadyRunning = false
         
         for app in running {
@@ -27,9 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if !alreadyRunning {
-            NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.terminate), name: "killLauncher", object: mainAppIdentifier)
+            DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.terminate), name: NSNotification.Name("killLauncher"), object: mainAppIdentifier)
             
-            let path = NSBundle.mainBundle().bundlePath as NSString
+            let path = Bundle.main.bundlePath as NSString
             var components = path.pathComponents
             components.removeLast()
             components.removeLast()
@@ -37,16 +37,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             components.append("MacOS")
             components.append("TFSHelper") //main app name
             
-            let newPath = NSString.pathWithComponents(components)
+            let newPath = NSString.path(withComponents: components)
             
-            NSWorkspace.sharedWorkspace().launchApplication(newPath)
+            NSWorkspace.shared().launchApplication(newPath)
         }
         else {
             self.terminate()
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     deinit {
-        NSDistributedNotificationCenter.defaultCenter().removeObserver(self)
+        DistributedNotificationCenter.default().removeObserver(self)
     }
 }
 
