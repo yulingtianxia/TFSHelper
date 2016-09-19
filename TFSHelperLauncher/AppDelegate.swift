@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if !alreadyRunning {
-            DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.terminate), name: NSNotification.Name("killLauncher"), object: mainAppIdentifier)
+            DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.terminate), name: Notification.Name("killLauncher"), object: mainAppIdentifier)
             
             let path = Bundle.main.bundlePath as NSString
             var components = path.pathComponents

@@ -45,7 +45,7 @@ func handlePasteboard() {
     if let result = catchTFSLocation() {
         recentUseLinks[result] = URL(fileURLWithPath: result).pathComponents.last
         writePasteboard(result)
-        DistributedNotificationCenter.default().post(name: NSNotification.Name("simulateKeys"), object: Bundle.main.bundleIdentifier!)
+        DistributedNotificationCenter.default().post(name: Notification.Name("simulateKeys"), object: Bundle.main.bundleIdentifier!)
     }
     previousChangeCount = NSPasteboard.general().changeCount
 }

@@ -91,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         
         if startedAtLogin {
-            DistributedNotificationCenter.default().post(name: NSNotification.Name("killLauncher"), object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().post(name: Notification.Name("killLauncher"), object: Bundle.main.bundleIdentifier!)
         }
         
         if !sandBoxTrickerStarted {
@@ -129,7 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         userDefaults.set(autoLaunch, forKey: "autoLaunch")
         let linksData = NSKeyedArchiver.archivedData(withRootObject: recentUseLinks)
         userDefaults.set(linksData, forKey: "recentUseLinks")
-        DistributedNotificationCenter.default().post(name: NSNotification.Name("killSandBoxTricker"), object: Bundle.main.bundleIdentifier!)
+        DistributedNotificationCenter.default().post(name: Notification.Name("killSandBoxTricker"), object: Bundle.main.bundleIdentifier!)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

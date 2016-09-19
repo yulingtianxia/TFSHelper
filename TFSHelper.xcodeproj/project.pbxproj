@@ -258,6 +258,7 @@
 					A42F6B051D02D83F0030FC9F = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = D3RCVUP6VH;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -437,6 +438,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -455,6 +457,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

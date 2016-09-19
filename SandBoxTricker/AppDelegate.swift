@@ -13,20 +13,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let mainAppIdentifier = "com.yulingtianxia.TFSHelper"
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.simulateKeys), name: "simulateKeys", object: mainAppIdentifier)
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.terminate), name: "killSandBoxTricker", object: mainAppIdentifier)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.simulateKeys), name: Notification.Name("simulateKeys"), object: mainAppIdentifier)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.terminate), name: Notification.Name("killSandBoxTricker"), object: mainAppIdentifier)
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
     func simulateKeys() {
-        let task = NSTask()
+        let task = Process()
         task.launchPath = "/usr/bin/osascript"
-        task.arguments = ["\(NSBundle.mainBundle().resourcePath!)/simulateKeys.scpt"]
+        task.arguments = ["\(Bundle.main.resourcePath!)/simulateKeys.scpt"]
         task.launch()
     }
     
@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     deinit {
-        NSDistributedNotificationCenter.defaultCenter().removeObserver(self)
+        DistributedNotificationCenter.default().removeObserver(self)
     }
 }
 
