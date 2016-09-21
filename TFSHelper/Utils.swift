@@ -136,8 +136,8 @@ class LRUCache <K:Hashable, V> : NSObject, NSCoding, Sequence {
     }
     
     @objc func encode(with aCoder: NSCoder) {
-        aCoder.encode(_keys as AnyObject as! NSArray, forKey: "keys")
-        aCoder.encode(_cache as AnyObject as! NSDictionary, forKey: "cache")
+        aCoder.encode(_keys, forKey: "keys")
+        aCoder.encode(_cache, forKey: "cache")
     }
     
 }
