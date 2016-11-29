@@ -1,7 +1,7 @@
 TFSHelper
 ===========
-![](https://img.shields.io/badge/swift-2.2-red.svg)
-![](https://img.shields.io/badge/prerelease-v1.3.0-blue.svg)
+![](https://img.shields.io/badge/swift-3.0-red.svg)
+![](https://img.shields.io/badge/release-v1.3.1-blue.svg)
 ![](https://img.shields.io/badge/OS%20X-10.10%2B-brightgreen.svg)
 
 ![](image/TFS.png)
@@ -35,6 +35,8 @@ TFSHelper 是我开发的一个 Mac 上的 tfs 辅助工具。它可以在我们
 
 ##版本记录
 
+###v1.3.1
+自动去除链接中的换行
 ###v1.3.0 beta
 由于 NSCache 不是很符合我的需求，我自己构造了个LRU Cache 来缓存最近使用的5个 tfs 链接
 ###v1.2.2
