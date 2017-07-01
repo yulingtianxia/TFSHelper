@@ -1,4 +1,4 @@
-TFSHelper
+# TFSHelper
 ===========
 ![](https://img.shields.io/badge/swift-3.0-red.svg)
 ![](https://img.shields.io/badge/release-v1.3.1-blue.svg)
@@ -33,31 +33,31 @@ TFSHelper 是我开发的一个 Mac 上的 tfs 辅助工具。它可以在我们
 
 常用链接会记录最近打开的 5 个 TFS 链接，因为 `NSCache` 不是很符合我的要求，所以我自己手动写了个 LRU Cache。相比于 Cocoa 提供的 `NSCache`，我写的这个 LRU Cache 支持遍历 key 值，并根据场景需求做了一些定制，比如 get 操作并不会算作使用频次。用法很简单，可以将其当为数组来获取 key，也能当成字典使用，通过 key 获取 value。因为我让它兼容了两套协议，并实现 `SequenceType` 协议能够使用 `for...in` 遍历，这些特性都是 `NSCache` 所没有的。
 
-##版本记录
+## 版本记录
 
-###v1.3.1
+### v1.3.1
 自动去除链接中的换行
 ###v1.3.0 beta
 由于 NSCache 不是很符合我的需求，我自己构造了个LRU Cache 来缓存最近使用的5个 tfs 链接
 ###v1.2.2
 采用检测并连接 tfs 延时0.5秒清除粘贴板的策略
-###v1.2.1
+### v1.2.1
 - 修复 bug
 - 调整粘贴板策略
 
-###v1.2 
+### v1.2 
 - 添加登录时自动启动
 
-###v1.1 
+### v1.1 
 - 添加自动捕获tfs链接的开关
 - 添加退出功能
 
-###v1.0
+### v1.0
 - 实现自动打开 tfs 链接
 - 实现手动打开 tfs 链接
 - 绘制图标
 
-##License
+## License
 
 The MIT License.
 
