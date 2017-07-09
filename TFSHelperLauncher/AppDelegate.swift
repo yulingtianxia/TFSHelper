@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        let running = NSWorkspace.shared().runningApplications
+        let running = NSWorkspace.shared.runningApplications
         var alreadyRunning = false
         
         for app in running {
@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             let newPath = NSString.path(withComponents: components)
             
-            NSWorkspace.shared().launchApplication(newPath)
+            NSWorkspace.shared.launchApplication(newPath)
         }
         else {
             self.terminate()
@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func terminate() {
+    @objc func terminate() {
         NSApp.terminate(nil)
     }
     

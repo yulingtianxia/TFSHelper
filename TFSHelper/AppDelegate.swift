@@ -13,7 +13,7 @@ import ServiceManagement
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let launcherAppIdentifier = "com.yulingtianxia.TFSHelperLauncher"
     let sandBoxTricker = "com.yulingtianxia.SandBoxTricker"
-    let statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let mainMenu: NSMenu = NSMenu()
     
     var autoCatch: Bool = true {
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         mainMenu.addItem(switchAutoLaunchItem)
         mainMenu.addItem(quitItem)
         
-        statusItem.button?.image = NSImage(named: "TFSmenu")
+        statusItem.button?.image = NSImage(named: NSImage.Name(rawValue: "TFSmenu"))
         statusItem.menu = mainMenu
         
         recentUseLinks = LRUCache <String, String>()
@@ -81,7 +81,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         
         var startedAtLogin = false
         var sandBoxTrickerStarted = false
-        for app in NSWorkspace.shared().runningApplications {
+        for app in NSWorkspace.shared.runningApplications {
             if app.bundleIdentifier == launcherAppIdentifier {
                 startedAtLogin = true
             }
@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             if let url = URL(string: "http://7ni3rk.com1.z0.glb.clouddn.com/SandBoxTricker.app.zip") {
                 let downloadtask = URLSession(configuration: URLSessionConfiguration.default).downloadTask(with: url, completionHandler: { (tempURL, response, error) in
                     if error != nil {
-                        print("can't download SandBoxTricker! \(error?.localizedDescription)")
+                        print("can't download SandBoxTricker! \(String(describing: error?.localizedDescription))")
                     }
                     if tempURL !=  nil {
                         unzip(path, zipFile: tempURL!.path)
@@ -114,7 +114,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                         
                         let appPath = NSString.path(withComponents: components)
                         
-                        NSWorkspace.shared().launchApplication(appPath)
+                        NSWorkspace.shared.launchApplication(appPath)
                     }
                 })
                 downloadtask.resume()
@@ -136,26 +136,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         return false
     }
     
-    func pollPasteboard(_ timer: Timer) {
+    @objc func pollPasteboard(_ timer: Timer) {
         if !autoCatch {
             return
         }
-        let currentChangeCount = NSPasteboard.general().changeCount
+        let currentChangeCount = NSPasteboard.general.changeCount
         if currentChangeCount == previousChangeCount {
             return
         }
         handlePasteboard()
     }
     
-    func connect(_ sender: NSStatusBarButton) {
+    @objc func connect(_ sender: NSStatusBarButton) {
         handlePasteboard()
     }
     
-    func switchAutoCatch() {
+    @objc func switchAutoCatch() {
         autoCatch = !autoCatch
     }
     
-    func switchAutoLaunch() {
+    @objc func switchAutoLaunch() {
         autoLaunch = !autoLaunch
     }
     
@@ -198,7 +198,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     // 处理点击link子菜单事件
-    func handleSelectLink(_ item: NSMenuItem) {
+    @objc func handleSelectLink(_ item: NSMenuItem) {
         let index = recentLinksMenu.index(of: item)
         writePasteboard(recentUseLinks[index])
         if !autoCatch {
@@ -207,7 +207,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     // 处理清空 link 菜单事件
-    func clearLinks() {
+    @objc func clearLinks() {
         recentUseLinks.cleanCache()
     }
 }

@@ -22,12 +22,12 @@ func unzip(_ destination: String, zipFile: String) {
 }
 
 func writePasteboard(_ location: String) {
-    NSPasteboard.general().declareTypes([NSStringPboardType], owner: nil)
-    NSPasteboard.general().setString(location, forType: NSStringPboardType)
+    NSPasteboard.general.declareTypes([.string], owner: nil)
+    NSPasteboard.general.setString(location, forType: .string)
 }
 
 func catchTFSLocation() -> String? {
-    if let texts = NSPasteboard.general().readObjects(forClasses: [NSString.self as AnyClass], options: nil) as? [String] {
+    if let texts = NSPasteboard.general.readObjects(forClasses: [NSString.self as AnyClass], options: nil) as? [String] {
         for var text in texts {
             if let range = text.range(of: "\\\\tencent") {
                 text = convert(text.substring(from: range.lowerBound))
@@ -47,7 +47,7 @@ func handlePasteboard() {
         writePasteboard(result)
         DistributedNotificationCenter.default().post(name: Notification.Name("simulateKeys"), object: Bundle.main.bundleIdentifier!)
     }
-    previousChangeCount = NSPasteboard.general().changeCount
+    previousChangeCount = NSPasteboard.general.changeCount
 }
 
 func convert(_ winConnect: String) -> String {

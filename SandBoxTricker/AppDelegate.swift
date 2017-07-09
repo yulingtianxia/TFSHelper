@@ -23,14 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func simulateKeys() {
+    @objc func simulateKeys() {
         let task = Process()
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["\(Bundle.main.resourcePath!)/simulateKeys.scpt"]
         task.launch()
     }
     
-    func terminate() {
+    @objc func terminate() {
         NSApp.terminate(nil)
     }
     
