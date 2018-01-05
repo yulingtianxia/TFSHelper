@@ -1,6 +1,6 @@
 # TFSHelper
-===========
-![](https://img.shields.io/badge/swift-3.0-red.svg)
+
+![](https://img.shields.io/badge/swift-4.0-red.svg)
 ![](https://img.shields.io/badge/release-v1.3.1-blue.svg)
 ![](https://img.shields.io/badge/OS%20X-10.10%2B-brightgreen.svg)
 

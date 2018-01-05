@@ -30,10 +30,10 @@ func catchTFSLocation() -> String? {
     if let texts = NSPasteboard.general.readObjects(forClasses: [NSString.self as AnyClass], options: nil) as? [String] {
         for var text in texts {
             if let range = text.range(of: "\\\\tencent") {
-                text = convert(text.substring(from: range.lowerBound))
+                text = convert(String(text[range.lowerBound...]))
             }
             if let range = text.range(of: "smb://") {
-                text = text.substring(from: range.lowerBound)
+                text = String(text[range.lowerBound...])
                 return text
             }
         }
