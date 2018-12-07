@@ -8,13 +8,16 @@
 
 import Cocoa
 import ServiceManagement
+import SystemConfiguration
+import CoreFoundation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
+    
     let launcherAppIdentifier = "com.yulingtianxia.TFSHelperLauncher"
     let sandBoxTricker = "com.yulingtianxia.SandBoxTricker"
-    let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let mainMenu: NSMenu = NSMenu()
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let mainMenu = NSMenu()
     
     var autoCatch: Bool = true {
         didSet {
@@ -62,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         statusItem.button?.image = NSImage(named: NSImage.Name(rawValue: "TFSmenu"))
         statusItem.menu = mainMenu
         
-        recentUseLinks = LRUCache <String, String>()
+        recentUseLinks = LRUCache<String, String>()
         let linksData = NSKeyedArchiver.archivedData(withRootObject: recentUseLinks)
         
         userDefaults.register(defaults: ["autoCatch":autoCatch])
@@ -76,8 +79,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             recentUseLinks = NSKeyedUnarchiver.unarchiveObject(with: data) as! LRUCache <String, String>
         }
         recentUseLinks.countLimit = 5
+//        var context = SCDynamicStoreContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
+//        let store = SCDynamicStoreCreate(nil, "ControlPlane" as CFString, nil, &context)
+//        if let dict = SCDynamicStoreCopyMultiple(store, nil, ["Setup:/Network/Service/[^/]+/DNS"] as CFArray) as? Dictionary<String, Dictionary<String, Array<String>>> {
+//            var result = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, 0, nil, nil)
+//            for (key, var value) in dict {
+//                let domain = "test.tencent.com"
+//                if var searchDomains = value[kSCPropNetDNSSearchDomains as String], !searchDomains.contains(domain) {
+//                    searchDomains.append(domain)
+////                    value[kSCPropNetDNSSearchDomains as String] = searchDomains
+//                    let searchDomainsCFArr = searchDomains.map { (domain) -> CFString in
+//                        return domain as CFString
+//                    } as CFArray
+//                    if let searchDomainsDictCF = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, 0, nil, nil) {
+//                        let keyForSearchDomains = Unmanaged.passUnretained(kSCPropNetDNSSearchDomains as CFString).toOpaque()
+//                        let valueForSearchDomains = Unmanaged.passUnretained(searchDomainsCFArr).toOpaque()
+//                        CFDictionarySetValue(searchDomainsDictCF, keyForSearchDomains, valueForSearchDomains)
+//                        let keyForResult = Unmanaged.passUnretained(key as CFString).toOpaque()
+//                        let valueForResult = Unmanaged.passUnretained(searchDomainsDictCF).toOpaque()
+//                        CFDictionarySetValue(result, keyForResult, valueForResult)
+//                    }
+//                }
+//            }
+//            let success = SCDynamicStoreSetMultiple(store, result, nil, nil)
+//            print(success)
+//        }
+        
+        
         
         Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
+        
         
         var startedAtLogin = false
         var sandBoxTrickerStarted = false

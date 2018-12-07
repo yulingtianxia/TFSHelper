@@ -16,6 +16,7 @@
 		A43258311C06E9A500E7E8BE /* TFSHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258301C06E9A500E7E8BE /* TFSHelperTests.swift */; };
 		A432584A1C06E9D500E7E8BE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43258491C06E9D500E7E8BE /* Utils.swift */; };
 		A482F80A1D05740500FD8F6E /* simulateKeys.scpt in Resources */ = {isa = PBXBuildFile; fileRef = A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */; };
+		A486FBA721BA78930066A827 /* setsearchdomains.sh in Resources */ = {isa = PBXBuildFile; fileRef = A486FBA621BA78930066A827 /* setsearchdomains.sh */; };
 		A4BB13D01C0B349C00466DF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB13CF1C0B349C00466DF5 /* AppDelegate.swift */; };
 		A4BB13D21C0B349C00466DF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BB13D11C0B349C00466DF5 /* Assets.xcassets */; };
 		A4BB13D51C0B349C00466DF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BB13D31C0B349C00466DF5 /* MainMenu.xib */; };
@@ -61,6 +62,7 @@
 		A43258321C06E9A500E7E8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43258491C06E9D500E7E8BE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = simulateKeys.scpt; path = ../TFSHelper/simulateKeys.scpt; sourceTree = "<group>"; };
+		A486FBA621BA78930066A827 /* setsearchdomains.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = setsearchdomains.sh; path = TFSHelper/setsearchdomains.sh; sourceTree = SOURCE_ROOT; };
 		A4ADC03F1D058F310048BB7C /* SandBoxTricker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SandBoxTricker.entitlements; sourceTree = "<group>"; };
 		A4BB13CD1C0B349C00466DF5 /* TFSHelperLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFSHelperLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BB13CF1C0B349C00466DF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				A4ADC03F1D058F310048BB7C /* SandBoxTricker.entitlements */,
 				A42F6B081D02D83F0030FC9F /* AppDelegate.swift */,
 				A432584B1C06EA2800E7E8BE /* simulateKeys.scpt */,
+				A486FBA621BA78930066A827 /* setsearchdomains.sh */,
 				A42F6B0A1D02D83F0030FC9F /* Assets.xcassets */,
 				A42F6B0C1D02D83F0030FC9F /* MainMenu.xib */,
 				A42F6B0F1D02D83F0030FC9F /* Info.plist */,
@@ -252,7 +255,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "杨萧玉";
 				TargetAttributes = {
 					A42F6B051D02D83F0030FC9F = {
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A42F6B0B1D02D83F0030FC9F /* Assets.xcassets in Resources */,
+				A486FBA721BA78930066A827 /* setsearchdomains.sh in Resources */,
 				A482F80A1D05740500FD8F6E /* simulateKeys.scpt in Resources */,
 				A42F6B0E1D02D83F0030FC9F /* MainMenu.xib in Resources */,
 			);
@@ -475,12 +479,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -527,12 +533,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -569,6 +577,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = TFSHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -585,6 +594,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = TFSHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.TFSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

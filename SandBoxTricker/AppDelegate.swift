@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.simulateKeys), name: Notification.Name("simulateKeys"), object: mainAppIdentifier)
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(AppDelegate.terminate), name: Notification.Name("killSandBoxTricker"), object: mainAppIdentifier)
+        setSearchDomains()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -27,6 +28,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let task = Process()
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["\(Bundle.main.resourcePath!)/simulateKeys.scpt"]
+        task.launch()
+    }
+    
+    func setSearchDomains() {
+        let task = Process()
+        task.launchPath = "/usr/bin/bash"
+        task.arguments = ["\(Bundle.main.resourcePath!)/setsearchdomains.sh"]
         task.launch()
     }
     
