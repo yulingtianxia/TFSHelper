@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setSearchDomains() {
         let task = Process()
-        task.launchPath = "/usr/bin/bash"
+        task.launchPath = "/bin/sh"
         task.arguments = ["\(Bundle.main.resourcePath!)/setsearchdomains.sh"]
         task.launch()
     }

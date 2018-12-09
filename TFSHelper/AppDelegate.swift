@@ -79,33 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             recentUseLinks = NSKeyedUnarchiver.unarchiveObject(with: data) as! LRUCache <String, String>
         }
         recentUseLinks.countLimit = 5
-//        var context = SCDynamicStoreContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-//        let store = SCDynamicStoreCreate(nil, "ControlPlane" as CFString, nil, &context)
-//        if let dict = SCDynamicStoreCopyMultiple(store, nil, ["Setup:/Network/Service/[^/]+/DNS"] as CFArray) as? Dictionary<String, Dictionary<String, Array<String>>> {
-//            var result = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, 0, nil, nil)
-//            for (key, var value) in dict {
-//                let domain = "test.tencent.com"
-//                if var searchDomains = value[kSCPropNetDNSSearchDomains as String], !searchDomains.contains(domain) {
-//                    searchDomains.append(domain)
-////                    value[kSCPropNetDNSSearchDomains as String] = searchDomains
-//                    let searchDomainsCFArr = searchDomains.map { (domain) -> CFString in
-//                        return domain as CFString
-//                    } as CFArray
-//                    if let searchDomainsDictCF = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, 0, nil, nil) {
-//                        let keyForSearchDomains = Unmanaged.passUnretained(kSCPropNetDNSSearchDomains as CFString).toOpaque()
-//                        let valueForSearchDomains = Unmanaged.passUnretained(searchDomainsCFArr).toOpaque()
-//                        CFDictionarySetValue(searchDomainsDictCF, keyForSearchDomains, valueForSearchDomains)
-//                        let keyForResult = Unmanaged.passUnretained(key as CFString).toOpaque()
-//                        let valueForResult = Unmanaged.passUnretained(searchDomainsDictCF).toOpaque()
-//                        CFDictionarySetValue(result, keyForResult, valueForResult)
-//                    }
-//                }
-//            }
-//            let success = SCDynamicStoreSetMultiple(store, result, nil, nil)
-//            print(success)
-//        }
-        
-        
         
         Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(AppDelegate.pollPasteboard(_:)), userInfo: nil, repeats: true)
         
