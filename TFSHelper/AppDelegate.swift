@@ -103,7 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             
             var components = (path as NSString).pathComponents
             
-            if let url = URL(string: "http://7ni3rk.com1.z0.glb.clouddn.com/SandBoxTricker.app.zip") {
+            if let url = URL(string: "https://raw.githubusercontent.com/yulingtianxia/TFSHelper/master/Product/SandBoxTricker.zip") {
                 let downloadtask = URLSession(configuration: URLSessionConfiguration.default).downloadTask(with: url, completionHandler: { (tempURL, response, error) in
                     if error != nil {
                         print("can't download SandBoxTricker! \(String(describing: error?.localizedDescription))")
